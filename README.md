@@ -18,9 +18,12 @@ gridsponsive requires javascript and jQuery during the development phase. Once d
   <script type="text/javascript" src="pathtofile/gridsponsive.js"></script>
   <style type="text/css" id="gridsponsive"></style>
   <script type="text/javascript">
-    $('body').gridsponsive({
-      styleId: 'gridsponsive',
-      cutoffs: [960, 550]
+    $(document).ready(function() {
+      $('body').gridsponsive({
+        styleId: 'gridsponsive',
+        cutoffs: [960, 550],
+        show: false
+      });
     });
   </script>
 ```
