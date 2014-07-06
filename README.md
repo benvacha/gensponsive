@@ -22,7 +22,7 @@ gridsponsive requires javascript and jQuery during the development phase. Once d
       $('body').gridsponsive({
         styleId: 'gridsponsive',
         cutoffs: [960, 550],
-        show: false
+        showOutput: false
       });
     });
   </script>
@@ -67,7 +67,7 @@ Specifications are what dynamic values should be applied for that region. A spec
 |--------------|-------------|--------------------------------------------------------------------------------|
 | body         |             | sets the page width and height to fill the entire browser window               |
 | footer       | int         | creates a sticky footer with (integer)px height                                |
-| grid         |             | sets the element to behave as a grid                                           |
+| gridsponsive |             | sets the element to behave as a grid                                           |
 | col          |             | sets the element to behave as a column                                         |
 | clear        | int         | if f then 0 height and no clear, if integer then clear and have integer height |
 | hide         | t, f        | if t then hide the element, if f then show the element                         |
