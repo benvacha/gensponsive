@@ -22,7 +22,9 @@ gridsponsive requires javascript and jQuery during the development phase. Once d
       $('body').gridsponsive({
         styleId: 'gridsponsive',
         cutoffs: [960, 550],
-        showOutput: false
+        showOutput: false,
+        storageKey: 'gridsponsive',
+        stateless: false
       });
     });
   </script>

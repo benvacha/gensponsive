@@ -50,7 +50,44 @@
     
     // manage stored tags 
     var archiver = {
-        
+        // get array of stored tokens
+        get: function(storageKey) {
+            var slug = localStorage.getItem(storageKey);
+            return (slug) ? slug.split(',') : [];
+        },
+        // store array of tokens
+        set: function(storageKey, tokens) {
+            localStorage.setItem(storageKey, tokens.join(','));
+        },
+        // clear stored tokens
+        remove: function(storageKey) {
+            localStorage.removeItem(storageKey);
+        },
+        // update stored tokens with unique tokens and return unique tokens
+        // if stateless, remove stored tokens and return newTokens
+        update: function(storageKey, newTokens, stateless) {
+            if(stateless) {
+                // remove stored tokens, return new tokens
+                archiver.remove(storageKey);
+                return newTokens;
+            } else {
+                // get stored tokens, merge and sort with new tokens
+                var i, storedTokens, sortedTokens,
+                    lastToken, uniqueTokens = [];
+                storedTokens = archiver.get(storageKey);
+                sortedTokens = storedTokens.concat(newTokens).sort();
+                // find unique tokens
+                for(i=0; i<sortedTokens.length; i++) {
+                    if(sortedTokens[i] !== lastToken) {
+                        lastToken = sortedTokens[i];
+                        uniqueTokens.push(lastToken);
+                    }
+                }
+                // store unique tokens, return unique tokens
+                archiver.set(storageKey, uniqueTokens);
+                return uniqueTokens;
+            }
+        }
     };
     
     // build the components of the css definitions
@@ -71,13 +108,18 @@
             $this.data('gridsponsive', $.extend( {
                 styleId: 'gridsponsive',
                 cutoffs: [960, 550],
-                showOutput: false
+                showOutput: false,
+                storageKey: 'gridsponsive',
+                stateless: false
             }, options, $this.data('gridsponsive')));
             var data = $this.data('gridsponsive');
             
             /* */
             
-            var liveDefs = scanner.scan($this);
+            var liveDefs, uniqueDefs;
+            liveDefs = scanner.scan($this);
+            uniqueDefs = archiver.update(data.storageKey, liveDefs, data.stateless);
+            
                 
         }); }
     };
