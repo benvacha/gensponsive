@@ -17,7 +17,35 @@
     
     // scan source for unique tags
     var scanner = {
-        
+        // get array of unique sorted class definitions
+        scan: function($source) {
+            var i, j, slugs = [], tokens, allTokens = [],
+                lastToken, uniqueTokens = [];
+            // get all class attributes
+            $source.find('.gridsponsive').each(function() {
+                slugs.push($(this).attr('class'));
+                $(this).find('*').each(function() {
+                    slugs.push($(this).attr('class'));
+                });
+            });
+            // split class attributes to get class definitions
+            for(i=0; i<slugs.length; i++) {
+                tokens = slugs[i].split(/[ ]+/);
+                for(j=0; j<tokens.length; j++) {
+                    allTokens.push(tokens[j]);
+                }
+            }
+            // find unique class definitions
+            allTokens.sort();
+            for(i=0; i<allTokens.length; i++) {
+                if(allTokens[i] !== lastToken) {
+                    lastToken = allTokens[i];
+                    uniqueTokens.push(lastToken);
+                }
+            }
+            //
+            return uniqueTokens;
+        }
     };
     
     // manage stored tags 
@@ -49,7 +77,7 @@
             
             /* */
             
-            
+            var liveDefs = scanner.scan($this);
                 
         }); }
     };
