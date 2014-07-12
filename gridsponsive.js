@@ -6,13 +6,95 @@
 (function( $ ){
     
     // order to build css
-    var buildOrder = {
-        
-    };
+    var buildOrder = [
+        'gridsponsive',
+        'body',
+        'footer',
+        'col'
+    ];
     
     // how to build css
+    /*
+        pattern: {
+            upstreamPattern: 'pattern',
+            downstreamPattern: 'pattern',
+            staticSelectors: ['static', 'static', ...],
+            selectorPatterns: ['pattern', 'pattern', ...],
+            selectorPrefixes: ['.', 'prefix', 'prefix', ...],
+            selectorPostfixes: ['postfix', 'postfix', ...],
+            rootProperties: function(spec) {
+                return 'properties';
+                // return null to ignore definition
+            },
+            nthProperties: function(spec, n) {
+                return 'properties';
+                // return null to ignore definition
+            }
+        }
+    */
     var blueprints = {
-        
+        gridsponsive: {
+            downstreamPattern: 'gridsponsiveAfter',
+            selectorPrefixes: ['.'],
+            rootProperties: function(spec) {
+                return 'position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
+            }
+        },
+        gridsponsiveAfter: {
+            selectorPrefixes: ['.'],
+            selectorPostfixes: [':after'],
+            rootProperties: function(spec) {
+                return "content:'';display:block;clear:both;";
+            }
+        },
+        html: {
+            staticSelectors: ['html', 'body'],
+            rootProperties: function(spec) {
+                return 'margin:0px;width:100%;height:100% !important;height:auto;min-height:100%;';
+            }
+        },
+        body: {
+            upstreamPattern: 'html',
+            selectorPrefixes: ['.gridsponsive.'],
+            rootProperties: function(spec) {
+                return 'position:relative;margin:0px;width:100%;height:auto !important;height:100%;min-height:100%;padding:0px;';
+            }
+        },
+        bodyAfter: {
+            selectorPatterns: ['body'],
+            selectorPrefixes: ['.gridsponsive.'],
+            selectorPostfixes: [':after'],
+            rootProperties: function(spec) {
+                return 'content:"";position:relative;display:block;clear:both;margin:0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec);
+            },
+            nthProperties: function(spec, n) {
+                return 'height:_px;'.replace(/_/g, spec);
+            }
+        },
+        footer: {
+            upstreamPattern: 'bodyAfter',
+            selectorPrefixes: ['.gridsponsive.'],
+            rootProperties: function(spec) {
+                return 'position:relative;display:block;clear:both;margin:-_px 0px 0px 0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec);
+            },
+            nthProperties: function(spec, n) {
+                return 'margin-top:-_px;height:_px;'.replace(/_/g, spec);
+            }
+        },
+        col: {
+            downstreamPattern: 'colAfter',
+            selectorPrefixes: ['.gridsponsive .'],
+            rootProperties: function(spec) {
+                return 'position:relative;display:block;float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
+            }
+        },
+        colAfter: {
+            selectorPrefixes: ['.gridsponsive .'],
+            selectorPostfixes: [':after'],
+            rootProperties: function(spec) {
+                return "content:'';display:block;clear:both;";
+            }
+        }
     };
     
     // scan source for unique tags
