@@ -109,7 +109,7 @@
                 styleId: 'gridsponsive',
                 cutoffs: [960, 550],
                 showOutput: false,
-                storageKey: 'gridsponsive',
+                storageKey: 'com.yoursite.gridsponsive',
                 stateless: false
             }, options, $this.data('gridsponsive')));
             var data = $this.data('gridsponsive');

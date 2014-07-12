@@ -23,7 +23,7 @@ gridsponsive requires javascript and jQuery during the development phase. Once d
         styleId: 'gridsponsive',
         cutoffs: [960, 550],
         showOutput: false,
-        storageKey: 'gridsponsive',
+        storageKey: 'com.yoursite.gridsponsive',
         stateless: false
       });
     });
