@@ -174,12 +174,46 @@
     
     // build the components of the css definitions
     var builder = {
-        
+        // return the media query for the cutoff
+        // if cutoff is null return null
+        getMediaQuery: function(cutoff) {
+            if(cutoff) {
+                return '@media screen and (max-width:' + cutoff + 'px)';
+            }
+            return null;
+        },
+        // return the css selectors and properties
+        // return null if no css for depth
+        getCss: function(clusters, depth) {
+            return 'body {ballin:true;}';
+        },
+        // return the clusters based on patterns and depth
+        getClusters: function(definitions, depth) {
+            
+        }
     };
     
     // generate the minified css
     var generator = {
-        
+        // generate and return the minified css
+        generate: function(cutoffs, definitions) {
+            var i, j, css = '', regions,
+                regionQuery, regionClusters, regionCss;
+            // for each region create the query and css
+            regions = [null].concat(cutoffs);
+            for(i=0; i<regions.length; i++) {
+                regionQuery = builder.getMediaQuery(regions[i]);
+                regionClusters = builder.getClusters(definitions, i);
+                regionCss = builder.getCss(regionClusters, i);
+                if(regionQuery && regionCss) {
+                    css += regionQuery + ' {' + regionCss + '}';
+                } else if(regionCss) {
+                    css += regionCss;
+                }
+            }
+            // return the collective css for each region
+            return css;
+        }
     };
     
     // plugin public methods
@@ -198,11 +232,13 @@
             
             /* */
             
-            var liveDefs, uniqueDefs;
+            var liveDefs, uniqueDefs, css;
             liveDefs = scanner.scan($this);
             uniqueDefs = archiver.update(data.storageKey, liveDefs, data.stateless);
+            css = generator.generate(data.cutoffs, uniqueDefs);
             
-                
+            console.log(css);
+            
         }); }
     };
  
