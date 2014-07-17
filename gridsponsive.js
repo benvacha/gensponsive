@@ -189,7 +189,26 @@
         },
         // return the clusters based on patterns and depth
         getClusters: function(definitions, depth) {
-            
+            var i, pattern, specs,
+                clusters = {};
+            // for each defintion, split it into tokens, if a token exits for the
+            // requested depth add the definition to the cluster based on pattern and spec
+            for(i=0; i<definitions.length; i++) {
+                specs = definitions[i].split('-');
+                pattern = specs.shift();
+                if(!depth || specs[depth]) {
+                    if(!clusters[pattern]) {
+                        clusters[pattern] = {};
+                    }
+                    if(!clusters[pattern][specs[depth]]) {
+                        clusters[pattern][specs[depth]] = [];
+                    }
+                    clusters[pattern][specs[depth]].push(definitions[i]);
+                }
+            }
+            // clusters = {pattern1: {spec1: [definitions], spec2: [defintions]}, pattern2: ...}
+            console.log(clusters);
+            return clusters;
         }
     };
     
@@ -237,7 +256,7 @@
             uniqueDefs = archiver.update(data.storageKey, liveDefs, data.stateless);
             css = generator.generate(data.cutoffs, uniqueDefs);
             
-            console.log(css);
+            $('.body').html(css);
             
         }); }
     };
