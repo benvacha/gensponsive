@@ -174,18 +174,44 @@
     
     // build the components of the css definitions
     var builder = {
-        // return the media query for the cutoff
-        // if cutoff is null return null
-        getMediaQuery: function(cutoff) {
-            if(cutoff) {
-                return '@media screen and (max-width:' + cutoff + 'px)';
+        // build the css for the pattern, definitions, spec, and depth
+        build: function(pattern, definitions, spec, depth) {
+            var css = '',
+                upstreamPattern = builder.getUpstreamPattern(blueprints[pattern]),
+                downstreamPattern = builder.getDownstreamPattern(blueprints[pattern]),
+                selectors = builder.getSelectors(blueprints[pattern], definitions),
+                properties = builder.getProperties(blueprints[pattern], spec, depth);
+            if(upstreamPattern) {
+                css += builder.build(upstreamPattern, definitions, spec, depth);
+            }
+            if(selectors && properties) {
+                css += selectors + ' {' + properties + '}';
+            }
+            if(downstreamPattern) {
+                css += builder.build(downstreamPattern, definitions, spec, depth);
+            }
+            return css;
+        },
+        //
+        getUpstreamPattern: function(blueprint) {
+            return (blueprint && blueprint.upstreamPattern) ? blueprint.upstreamPattern : null;
+        },
+        //
+        getDownstreamPattern: function(blueprint) {
+            return (blueprint && blueprint.downstreamPattern) ? blueprint.downstreamPattern : null;
+        },
+        //
+        getSelectors: function(blueprint, definitions) {
+            return definitions.join(', ');
+        },
+        //
+        getProperties: function(blueprint, spec, depth) {
+            if(depth === 0 && blueprint && blueprint.rootProperties) {
+                return blueprint.rootProperties(spec);
+            } else if(blueprint && blueprint.nthProperties) {
+                return blueprint.nthProperties(spec, depth);
             }
             return null;
-        },
-        // return the css selectors and properties
-        // return null if no css for depth
-        getCss: function(clusters, depth) {
-            return 'body {ballin:true;}';
         },
         // return the clusters based on patterns and depth
         getClusters: function(definitions, depth) {
@@ -196,7 +222,7 @@
             for(i=0; i<definitions.length; i++) {
                 specs = definitions[i].split('-');
                 pattern = specs.shift();
-                if(!depth || specs[depth]) {
+                if(depth === 0 || specs[depth]) {
                     if(!clusters[pattern]) {
                         clusters[pattern] = {};
                     }
@@ -207,8 +233,32 @@
                 }
             }
             // clusters = {pattern1: {spec1: [definitions], spec2: [defintions]}, pattern2: ...}
-            console.log(clusters);
             return clusters;
+        },
+        // return the media query for the cutoff
+        // if cutoff is null return null
+        getMediaQuery: function(cutoff) {
+            if(cutoff) {
+                return '@media screen and (max-width:' + cutoff + 'px)';
+            }
+            return null;
+        },
+        // return the css for the clusters at the depth
+        // return null if no css for depth
+        getCss: function(clusters, depth) {
+            var i, j, css = '',
+                pattern, cluster, definitions, spec;
+            //
+            for(i=0; i<buildOrder.length; i++) {
+                pattern = buildOrder[i];
+                cluster = clusters[pattern];
+                for(spec in cluster) {
+                    definitions = cluster[spec];
+                    css += builder.build(pattern, definitions, spec, depth);
+                }
+            }
+            //
+            return css;
         }
     };
     
