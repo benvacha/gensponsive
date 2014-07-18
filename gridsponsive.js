@@ -65,20 +65,44 @@
             selectorPrefixes: ['.gridsponsive.'],
             selectorPostfixes: [':after'],
             rootProperties: function(spec) {
-                return 'content:"";position:relative;display:block;clear:both;margin:0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec);
+                if(spec.indexOf('x')>=0) {
+                    return 'content:"";position:relative;display:block;clear:both;margin:0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec.split('x').shift());
+                }
+                if(spec.indexOf('a')>=0) {
+                    return 'content:"";position:relative;display:block;clear:both;margin:0px;width:100%;height:auto;padding:0px;'
+                }
+                return null;
             },
             nthProperties: function(spec, n) {
-                return 'height:_px;'.replace(/_/g, spec);
+                if(spec.indexOf('x')>=0) {
+                    return 'height:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                if(spec.indexOf('a')>=0) {
+                    return 'height:auto;';
+                }
+                return null;
             }
         },
         footer: {
             upstreamPattern: 'bodyAfter',
             selectorPrefixes: ['.gridsponsive.'],
             rootProperties: function(spec) {
-                return 'position:relative;display:block;clear:both;margin:-_px 0px 0px 0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec);
+                if(spec.indexOf('x')>=0) {
+                    return 'position:relative;display:block;clear:both;margin:-_px 0px 0px 0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec.split('x').shift());
+                }
+                if(spec.indexOf('a')>=0) {
+                    return 'position:relative;display:block;clear:both;margin:0px 0px 0px 0px;width:100%;height:auto;padding:0px;';
+                }
+                return null;
             },
             nthProperties: function(spec, n) {
-                return 'margin-top:-_px;height:_px;'.replace(/_/g, spec);
+                if(spec.indexOf('x')>=0) {
+                    return 'margin-top:-_px;height:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                if(spec.indexOf('a')>=0) {
+                    return 'margin-top:0px;height:auto;';
+                }
+                return null;
             }
         },
         col: {
@@ -324,13 +348,25 @@
         }
     };
     
+    // output the css into the dom
+    var outputter = {
+        // output the css to a style element
+        outputStyle: function(element, css) {
+            $(element).append(css);
+        },
+        // create an output element that the css can be copied from
+        output: function(css) {
+            
+        }
+    };
+    
     // plugin public methods
     var methods = {
         // initialize the plugin for each matched element
         init : function( options ) { return this.each(function(){
             var $this = $(this);
             $this.data('gridsponsive', $.extend( {
-                styleId: 'gridsponsive',
+                styleElement: '#gridsponsive',
                 cutoffs: [960, 550],
                 showOutput: false,
                 storageKey: 'com.yoursite.gridsponsive',
@@ -344,7 +380,8 @@
             liveDefs = scanner.scan($this);
             uniqueDefs = archiver.update(data.storageKey, liveDefs, data.stateless);
             css = generator.generate(data.cutoffs, uniqueDefs);
-            
+            outputter.outputStyle(data.styleElement, css);
+            if(data.showOutput) outputter.output(css);
             
         }); }
     };
