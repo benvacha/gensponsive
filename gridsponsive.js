@@ -192,19 +192,58 @@
             }
             return css;
         },
-        //
+        // get the upstream pattern for the blueprint
         getUpstreamPattern: function(blueprint) {
             return (blueprint && blueprint.upstreamPattern) ? blueprint.upstreamPattern : null;
         },
-        //
+        // get the downstream pattern for the blueprint
         getDownstreamPattern: function(blueprint) {
             return (blueprint && blueprint.downstreamPattern) ? blueprint.downstreamPattern : null;
         },
-        //
+        // get the combinations of selectors described by the blueprint
         getSelectors: function(blueprint, definitions) {
-            return definitions.join(', ');
+            var i, j, k, prefixes, postfixes,
+                projects = definitions, selectors = [];
+            // add static selectors
+            if(blueprint && blueprint.staticSelectors) {
+                selectors = blueprint.staticSelectors;
+            }
+            // projects are the statically defined patterns if defined
+            if(blueprint && blueprint.selectorPatterns) {
+                projects = blueprint.selectorPatterns;
+            }
+            // create all possible combinations of projects, prefixes, and postfixes
+            prefixes = (blueprint && blueprint.selectorPrefixes) ? blueprint.selectorPrefixes : null;
+            postfixes = (blueprint && blueprint.selectorPostfixes) ? blueprint.selectorPostfixes : null;
+            if(prefixes && postfixes) {
+                for(i=0; i<projects.length; i++) {
+                    for(j=0; j<prefixes.length; j++) {
+                        for(k=0; k<postfixes.length; k++) {
+                            selectors.push(prefixes[j] + projects[i] + postfixes[k]);
+                        }
+                    }
+                }
+            } else if(prefixes) {
+                for(i=0; i<projects.length; i++) {
+                    for(j=0; j<prefixes.length; j++) {
+                        selectors.push(prefixes[j] + projects[i]);
+                    }
+                }
+            } else if(postfixes) {
+                for(i=0; i<projects.length; i++) {
+                    for(j=0; j<postfixes.length; j++) {
+                        selectors.push(projects[i] + postfixes[j]);
+                    }
+                }
+            }
+            // return CSV string or null
+            if(selectors.length) {
+                return selectors.join(', ');
+            } else {
+                return null;
+            }
         },
-        //
+        // get the properties for the spec and depth
         getProperties: function(blueprint, spec, depth) {
             if(depth === 0 && blueprint && blueprint.rootProperties) {
                 return blueprint.rootProperties(spec);
@@ -306,7 +345,6 @@
             uniqueDefs = archiver.update(data.storageKey, liveDefs, data.stateless);
             css = generator.generate(data.cutoffs, uniqueDefs);
             
-            $('.body').html(css);
             
         }); }
     };
