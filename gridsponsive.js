@@ -329,8 +329,8 @@
     var generator = {
         // generate and return the minified css
         generate: function(cutoffs, definitions) {
-            var i, j, css = '', regions,
-                regionQuery, regionClusters, regionCss;
+            var i, j, css = '/* Generated using github.com/benvacha/gridsponsive */ ', 
+                regions, regionQuery, regionClusters, regionCss;
             // for each region create the query and css
             regions = [null].concat(cutoffs);
             for(i=0; i<regions.length; i++) {
@@ -356,7 +356,31 @@
         },
         // create an output element that the css can be copied from
         output: function(css) {
-            
+            var $outputter = $('<div />').css({
+                    position: 'fixed',
+                    top: '0px', left: '0px',
+                    width: '100%', height: '100%'
+                }),
+                $blackout = $('<div />').css({
+                    position: 'absolute',
+                    top: '0px', left: '0px',
+                    width: '100%', height: '100%',
+                    backgroundColor: 'rgba(0,0,0,.75)'
+                }),
+                $output = $('<textarea />').css({
+                    position: 'absolute',
+                    top: '10%', left: '15%',
+                    width: '70%', height: '50%',
+                    padding: '15px',
+                    backgroundColor: '#FFF', outline: 'none',
+                    WebkitBorderRadius: '10px', MozBoxShadow: '10px', borderRadius: '10px', 
+                    WebkitBoxShadow: '3px 3px 10px rgba(0,0,0,.75)', MozBoxShadow: '3px 3px 10px rgba(0,0,0,.75)',
+                    WebkitBoxSizing: 'border-box', MozBoxSizing: 'border-box',
+                    boxShadow: '3px 3px 10px rgba(0,0,0,.75)', boxSizing: 'border-box'
+                });
+            $output.val(css);
+            $outputter.append($blackout).append($output);
+            $('body').append($outputter);
         }
     };
     
