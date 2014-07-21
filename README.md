@@ -68,31 +68,31 @@ Specifications are what dynamic values should be applied for that region. A spec
 | Pattern      | Values      | Description                                                                    |
 |--------------|-------------|--------------------------------------------------------------------------------|
 | body         |             | sets the page width and height to fill the entire browser window               |
-| footer       | int         | creates a sticky footer with (integer)px height                                |
+| footer       | intx        | creates a sticky footer with (intx)px height                                   |
 | gridsponsive |             | sets the element to behave as a grid                                           |
 | col          |             | sets the element to behave as a column                                         |
-| clear        | int         | if f then 0 height and no clear, if integer then clear and have integer height |
-| hide         | t, f        | if t then hide the element, if f then show the element                         |
-| show         | t, f        | if t then show the element, if f then hide the element                         |
-| pos          | l, r, c     | l is left align element, r is right align element, c is left align element     |
-| width        | a, int, intx| element has (int)% width, element has (intx)px width                           |
-| height       | a, int, intx| element has (int)% height, element has (intx)px height                         |
-| color        | hex         | element has #hex text color                                                    |
-| bgcolor      | hex         | element has #hex background color                                              |
-| pad          | int         | element has (integer)px padding on all sides                                   |
-| padtb        | int         | element has (integer)px padding on top and bottom                              |
-| padlr        | int         | element has (integer)px padding on left and right                              |
-| padt         | int         | element has (integer)px padding on top                                         |
-| padr         | int         | element has (integer)px padding on right                                       |
-| padb         | int         | element has (integer)px padding on bottom                                      |
-| padl         | int         | element has (integer)px padding on left                                        |
-| push         | int         | element has (integer)px 'margin' on all sides                                  |
-| pushtb       | int         | element has (integer)px 'margin' on top and bottom                             |
-| pushlr       | int         | element has (integer)px 'margin' on left and right                             |
-| pusht        | int         | element has (integer)px 'margin' on top                                        |
-| pushr        | int         | element has (integer)px 'margin' on right                                      |
-| pushb        | int         | element has (integer)px 'margin' on bottom                                     |
-| pushl        | int         | element has (integer)px 'margin' on left                                       |
+| clear        | f, intx     | if (f)alse then 0 height and no clear, or clear and have (intx)px height       |
+| hide         | t, f        | if (t)rue then hide the element, if (f)alse then show the element              |
+| show         | t, f        | if (t)rue then show the element, if (f)alse then hide the element              |
+| pos          | l, r, c     | (l)eft align element, (r)ight align element, (c)enter align element            |
+| width        | a, int, intx| element has (int)% width, or (intx)px width, or (a)uto width                   |
+| height       | a, int, intx| element has (int)% height, or (intx)px height, or (a)uto height                |
+| color        | t, hex      | element has #(hex) text color, or is (t)ransparent                             |
+| bgcolor      | t, hex      | element has #(hex) background color, or is (t)ransparent                       |
+| pad          | int, intx   | element has (int)% or (intx)px padding on all sides                            |
+| padtb        | int, intx   | element has (int)% or (intx)px padding on top and bottom                       |
+| padlr        | int, intx   | element has (int)% or (intx)px padding on left and right                       |
+| padt         | int, intx   | element has (int)% or (intx)px padding on top                                  |
+| padr         | int, intx   | element has (int)% or (intx)px padding on right                                |
+| padb         | int, intx   | element has (int)% or (intx)px padding on bottom                               |
+| padl         | int, intx   | element has (int)% or (intx)px padding on left                                 |
+| push         | int, intx   | element has (int)% or (intx)px 'margin' on all sides                           |
+| pushtb       | int, intx   | element has (int)% or (intx)px 'margin' on top and bottom                      |
+| pushlr       | int, intx   | element has (int)% or (intx)px 'margin' on left and right                      |
+| pusht        | int, intx   | element has (int)% or (intx)px 'margin' on top                                 |
+| pushr        | int, intx   | element has (int)% or (intx)px 'margin' on right                               |
+| pushb        | int, intx   | element has (int)% or (intx)px 'margin' on bottom                              |
+| pushl        | int, intx   | element has (int)% or (intx)px 'margin' on left                                |
 
 *note: all values can be left blank for a region
 
