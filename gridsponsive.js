@@ -139,7 +139,7 @@
             }
         },
         hide: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:none;';
@@ -151,7 +151,7 @@
             }
         },
         show: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:block;';
@@ -163,7 +163,7 @@
             }
         },
         pos: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('l')>=0) {
                     return 'float:left;';
@@ -172,13 +172,13 @@
                     return 'float:right;';
                 }
                 if(spec.indexOf('c')>=0) {
-                    return 'float:none;margin-left:auto;margin-right;auto;';
+                    return 'float:none;margin-left:auto;margin-right:auto;';
                 }
                 return null;
             }
         },
         width: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'width:auto;';
@@ -190,7 +190,7 @@
             }
         },
         height: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'height:auto;';
@@ -202,7 +202,7 @@
             }
         },
         color: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'color:transparent;';
@@ -211,7 +211,7 @@
             }
         },
         bgcolor: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'background-color:transparent;';
@@ -220,7 +220,7 @@
             }
         },
         pad: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
@@ -229,7 +229,7 @@
             }
         },
         padtb: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -238,7 +238,7 @@
             }
         },
         padlr: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -247,7 +247,7 @@
             }
         },
         padt: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;'.replace(/_/g, spec.split('x').shift());
@@ -256,7 +256,7 @@
             }
         },
         padr: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -265,7 +265,7 @@
             }
         },
         padb: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -274,7 +274,7 @@
             }
         },
         padl: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
@@ -283,7 +283,7 @@
             }
         },
         push: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -292,7 +292,7 @@
             }
         },
         pushtb: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -301,7 +301,7 @@
             }
         },
         pushlr: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;border-right:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -310,7 +310,7 @@
             }
         },
         pusht: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -319,7 +319,7 @@
             }
         },
         pushr: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-right:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -328,7 +328,7 @@
             }
         },
         pushb: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-bottom:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -337,7 +337,7 @@
             }
         },
         pushl: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
