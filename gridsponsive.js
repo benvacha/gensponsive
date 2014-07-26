@@ -12,6 +12,12 @@
         'footer',
         'col',
         'clear',
+        'chide', 'cshow',
+        'cpos',
+        'cwidth', 'cheight',
+        'ccolor', 'cbgcolor',
+        'cpad', 'cpadtb', 'cpadlr', 'cpadt', 'cpadr', 'cpadb', 'cpadl',
+        'cpush', 'cpushtb', 'cpushlr', 'cpusht', 'cpushr', 'cpushb', 'cpushl',
         'hide', 'show',
         'pos',
         'width', 'height',
@@ -150,8 +156,34 @@
                 return null;
             }
         },
+        chide: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('t')>=0) {
+                    return 'display:none;';
+                }
+                if(spec.indexOf('f')>=0) {
+                    return 'display:block;';
+                }
+                return null;
+            }
+        },
         show: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('t')>=0) {
+                    return 'display:block;';
+                }
+                if(spec.indexOf('f')>=0) {
+                    return 'display:none;';
+                }
+                return null;
+            }
+        },
+        cshow: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:block;';
@@ -177,8 +209,37 @@
                 return null;
             }
         },
+        cpos: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('l')>=0) {
+                    return 'float:left;';
+                }
+                if(spec.indexOf('r')>=0) {
+                    return 'float:right;';
+                }
+                if(spec.indexOf('c')>=0) {
+                    return 'float:none;margin-left:auto;margin-right:auto;';
+                }
+                return null;
+            }
+        },
         width: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('a')>=0) {
+                    return 'width:auto;';
+                }
+                if(spec.indexOf('x')>=0) {
+                    return 'width:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'width:_%;'.replace(/_/g, spec);
+            }
+        },
+        cwidth: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'width:auto;';
@@ -201,8 +262,31 @@
                 return 'height:_%;'.replace(/_/g, spec);
             }
         },
+        cheight: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('a')>=0) {
+                    return 'height:auto;';
+                }
+                if(spec.indexOf('x')>=0) {
+                    return 'height:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'height:_%;'.replace(/_/g, spec);
+            }
+        },
         color: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('t')>=0) {
+                    return 'color:transparent;';
+                }
+                return 'color:#_;'.replace(/_/g, spec);
+            }
+        },
+        ccolor: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'color:transparent;';
@@ -219,8 +303,28 @@
                 return 'background-color:#_;'.replace(/_/g, spec);
             }
         },
+        cbgcolor: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('t')>=0) {
+                    return 'background-color:transparent;';
+                }
+                return 'background-color:#_;'.replace(/_/g, spec);
+            }
+        },
         pad: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding:_%;'.replace(/_/g, spec);
+            }
+        },
+        cpad: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
@@ -237,8 +341,28 @@
                 return 'padding-top:_%;padding-bottom:_px;'.replace(/_/g, spec);
             }
         },
+        cpadtb: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-top:_px;padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-top:_%;padding-bottom:_px;'.replace(/_/g, spec);
+            }
+        },
         padlr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-left:_%;padding-right:_%;'.replace(/_/g, spec);
+            }
+        },
+        cpadlr: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -255,8 +379,28 @@
                 return 'padding-top:_%;'.replace(/_/g, spec);
             }
         },
+        cpadt: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-top:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-top:_%;'.replace(/_/g, spec);
+            }
+        },
         padr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-right:_%;'.replace(/_/g, spec);
+            }
+        },
+        cpadr: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -273,8 +417,28 @@
                 return 'padding-bottom:_%;'.replace(/_/g, spec);
             }
         },
+        cpadb: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-bottom:_%;'.replace(/_/g, spec);
+            }
+        },
         padl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'padding-left:_%;'.replace(/_/g, spec);
+            }
+        },
+        cpadl: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
@@ -291,8 +455,28 @@
                 return 'border:_% solid transparent;'.replace(/_/g, spec);
             }
         },
+        cpush: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border:_% solid transparent;'.replace(/_/g, spec);
+            }
+        },
         pushtb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-top:_% solid transparent;border-bottom:_% solid transparent'.replace(/_/g, spec);
+            }
+        },
+        cpushtb: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -309,8 +493,28 @@
                 return 'border-left:_% solid transparent;border-right:_% solid transparent'.replace(/_/g, spec);
             }
         },
+        cpushlr: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-left:_px solid transparent;border-right:_px solid transparent'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-left:_% solid transparent;border-right:_% solid transparent'.replace(/_/g, spec);
+            }
+        },
         pusht: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-top:_% solid transparent;'.replace(/_/g, spec);
+            }
+        },
+        cpusht: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -327,6 +531,16 @@
                 return 'border-right:_% solid transparent;'.replace(/_/g, spec);
             }
         },
+        cpushr: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-right:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-right:_% solid transparent;'.replace(/_/g, spec);
+            }
+        },
         pushb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
             nthProperties: function(spec, n) {
@@ -336,8 +550,28 @@
                 return 'border-bottom:_% solid transparent;'.replace(/_/g, spec);
             }
         },
+        cpushb: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-bottom:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-bottom:_% solid transparent;'.replace(/_/g, spec);
+            }
+        },
         pushl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('x')>=0) {
+                    return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
+                }
+                return 'border-left:_% solid transparent;'.replace(/_/g, spec);
+            }
+        },
+        cpushl: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: [' .col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -579,6 +813,8 @@
         // output the css to a style element
         outputStyle: function(element, css) {
             $(element).append(css);
+            // force webkit browser to redraw
+            $('body').hide().show(0);
         },
         // create an output element that the css can be copied from
         output: function(css) {

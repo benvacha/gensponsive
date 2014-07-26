@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../gridsponsive.js"></script>
+    <style type="text/css" id="gridsponsive"></style>
+    <script type="text/javascript">
+    
+        $(document).ready(function() {
+            
+            $('body').gridsponsive({
+                showOutput: false,
+                storageKey: 'com.yoursite.gridsponsive',
+                stateless: true
+            });
+             
+        });
+        
+    </script>
+</head>
+<body>
+    <div class="gridsponsive body width-960x-100 pos-c">
+        
+        <div class="cwidth-25-50 cpush-5x cpad-10x cbgcolor-CCC">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        
+        <div class="cwidth-33-100 cpush-10x cpad-10x cbgcolor-CCC">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        
+        <div class="cwidth-50-100 cpush-10x cpad-10x cbgcolor-CCC">
+            <div class="col">
+                <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>
+                <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>
+                <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>
+            </div>
+            <div class="col cwidth-25-100 cpush-5x cpad-5x cbgcolor-999">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="gridsponsive footer-30x-60x-110x bgcolor-999 cwidth-25-50-100 cheight-25x cpushtb--10x cpushlr-10x cbgcolor-CCC">
+        
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        
+    </div>
+</body>
+</html>
