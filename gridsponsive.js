@@ -158,7 +158,7 @@
         },
         chide: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:none;';
@@ -183,7 +183,7 @@
         },
         cshow: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:block;';
@@ -211,7 +211,7 @@
         },
         cpos: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('l')>=0) {
                     return 'float:left;';
@@ -239,7 +239,7 @@
         },
         cwidth: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'width:auto;';
@@ -264,7 +264,7 @@
         },
         cheight: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'height:auto;';
@@ -286,7 +286,7 @@
         },
         ccolor: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'color:transparent;';
@@ -305,7 +305,7 @@
         },
         cbgcolor: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'background-color:transparent;';
@@ -324,7 +324,7 @@
         },
         cpad: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
@@ -343,7 +343,7 @@
         },
         cpadtb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -362,7 +362,7 @@
         },
         cpadlr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -381,7 +381,7 @@
         },
         cpadt: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;'.replace(/_/g, spec.split('x').shift());
@@ -400,7 +400,7 @@
         },
         cpadr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -419,7 +419,7 @@
         },
         cpadb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -438,7 +438,7 @@
         },
         cpadl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
@@ -457,7 +457,7 @@
         },
         cpush: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -476,7 +476,7 @@
         },
         cpushtb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -495,7 +495,7 @@
         },
         cpushlr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;border-right:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -514,7 +514,7 @@
         },
         cpusht: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -533,7 +533,7 @@
         },
         cpushr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-right:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -552,7 +552,7 @@
         },
         cpushb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-bottom:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -571,7 +571,7 @@
         },
         cpushl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: [' .col'],
+            selectorPostfixes: ['>.col'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
