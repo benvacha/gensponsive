@@ -66,10 +66,10 @@ Specifications are what dynamic values should be applied for that region. A spec
 ---
 ### Patterns
 
-## Simple
+#### Simple
 Simple patterns such as width, color, and pad apply to the element they are defined on.
 
-## Compound
+#### Compound
 Compound patterns such as _width, _color, and _pad apply to the first div, ul, and li children of the element they are defined on.
 
 | Pattern            | Values      | Description                                                                    |
