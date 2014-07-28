@@ -65,34 +65,41 @@ Specifications are what dynamic values should be applied for that region. A spec
 
 ---
 ### Patterns
-| Pattern      | Values      | Description                                                                    |
-|--------------|-------------|--------------------------------------------------------------------------------|
-| body         |             | sets the page width and height to fill the entire browser window               |
-| footer       | intx        | creates a sticky footer with (intx)px height                                   |
-| gridsponsive |             | sets the element to behave as a grid                                           |
-| col          |             | sets the element to behave as a column                                         |
-| clear        | f, intx     | if (f)alse then 0 height and no clear, or clear and have (intx)px height       |
-| hide         | t, f        | if (t)rue then hide the element, if (f)alse then show the element              |
-| show         | t, f        | if (t)rue then show the element, if (f)alse then hide the element              |
-| pos          | l, r, c     | (l)eft align element, (r)ight align element, (c)enter align element            |
-| width        | a, int, intx| element has (int)% width, or (intx)px width, or (a)uto width                   |
-| height       | a, int, intx| element has (int)% height, or (intx)px height, or (a)uto height                |
-| color        | t, hex      | element has #(hex) text color, or is (t)ransparent                             |
-| bgcolor      | t, hex      | element has #(hex) background color, or is (t)ransparent                       |
-| pad          | int, intx   | element has (int)% or (intx)px padding on all sides                            |
-| padtb        | int, intx   | element has (int)% or (intx)px padding on top and bottom                       |
-| padlr        | int, intx   | element has (int)% or (intx)px padding on left and right                       |
-| padt         | int, intx   | element has (int)% or (intx)px padding on top                                  |
-| padr         | int, intx   | element has (int)% or (intx)px padding on right                                |
-| padb         | int, intx   | element has (int)% or (intx)px padding on bottom                               |
-| padl         | int, intx   | element has (int)% or (intx)px padding on left                                 |
-| push         | int, intx   | element has (int)% or (intx)px 'margin' on all sides                           |
-| pushtb       | int, intx   | element has (int)% or (intx)px 'margin' on top and bottom                      |
-| pushlr       | int, intx   | element has (int)% or (intx)px 'margin' on left and right                      |
-| pusht        | int, intx   | element has (int)% or (intx)px 'margin' on top                                 |
-| pushr        | int, intx   | element has (int)% or (intx)px 'margin' on right                               |
-| pushb        | int, intx   | element has (int)% or (intx)px 'margin' on bottom                              |
-| pushl        | int, intx   | element has (int)% or (intx)px 'margin' on left                                |
+
+## Simple
+Simple patterns such as width, color, and pad apply to the element they are defined on.
+
+## Compound
+Compound patterns such as _width, _color, and _pad apply to the first div, ul, and li children of the element they are defined on.
+
+| Pattern            | Values      | Description                                                                    |
+|--------------------|-------------|--------------------------------------------------------------------------------|
+| body               |             | sets the page width and height to fill the entire browser window               |
+| footer             | intx        | creates a sticky footer with (intx)px height                                   |
+| gridsponsive       |             | sets the element to behave as a grid                                           |
+| col, _col          |             | sets the element to behave as a column                                         |
+| clear              | f, intx     | if (f)alse then 0 height and no clear, or clear and have (intx)px height       |
+| hide, _hide        | t, f        | if (t)rue then hide the element, if (f)alse then show the element              |
+| show, _show        | t, f        | if (t)rue then show the element, if (f)alse then hide the element              |
+| pos, _pos          | l, r, c     | (l)eft align element, (r)ight align element, (c)enter align element            |
+| width, _width      | a, int, intx| element has (int)% width, or (intx)px width, or (a)uto width                   |
+| height, _height    | a, int, intx| element has (int)% height, or (intx)px height, or (a)uto height                |
+| color, _color      | t, hex      | element has #(hex) text color, or is (t)ransparent                             |
+| bgcolor, _bgcolor  | t, hex      | element has #(hex) background color, or is (t)ransparent                       |
+| pad, _pad          | int, intx   | element has (int)% or (intx)px padding on all sides                            |
+| padtb, _padtb      | int, intx   | element has (int)% or (intx)px padding on top and bottom                       |
+| padlr, _padlr      | int, intx   | element has (int)% or (intx)px padding on left and right                       |
+| padt, _padt        | int, intx   | element has (int)% or (intx)px padding on top                                  |
+| padr, _padr        | int, intx   | element has (int)% or (intx)px padding on right                                |
+| padb, _padb        | int, intx   | element has (int)% or (intx)px padding on bottom                               |
+| padl, _padl        | int, intx   | element has (int)% or (intx)px padding on left                                 |
+| push, _push        | int, intx   | element has (int)% or (intx)px 'margin' on all sides                           |
+| pushtb, _pushtb    | int, intx   | element has (int)% or (intx)px 'margin' on top and bottom                      |
+| pushlr, _pushlr    | int, intx   | element has (int)% or (intx)px 'margin' on left and right                      |
+| pusht, _pusht      | int, intx   | element has (int)% or (intx)px 'margin' on top                                 |
+| pushr, _pushr      | int, intx   | element has (int)% or (intx)px 'margin' on right                               |
+| pushb, _pushb      | int, intx   | element has (int)% or (intx)px 'margin' on bottom                              |
+| pushl, _pushl      | int, intx   | element has (int)% or (intx)px 'margin' on left                                |
 
 *note: all values can be left blank for a region
 

@@ -10,14 +10,14 @@
         'gridsponsive',
         'body',
         'footer',
-        'col',
+        '_col', 'col',
         'clear',
-        'chide', 'cshow',
-        'cpos',
-        'cwidth', 'cheight',
-        'ccolor', 'cbgcolor',
-        'cpad', 'cpadtb', 'cpadlr', 'cpadt', 'cpadr', 'cpadb', 'cpadl',
-        'cpush', 'cpushtb', 'cpushlr', 'cpusht', 'cpushr', 'cpushb', 'cpushl',
+        '_hide', '_show',
+        '_pos',
+        '_width', '_height',
+        '_color', '_bgcolor',
+        '_pad', '_padtb', '_padlr', '_padt', '_padr', '_padb', '_padl',
+        '_push', '_pushtb', '_pushlr', '_pusht', '_pushr', '_pushb', '_pushl',
         'hide', 'show',
         'pos',
         'width', 'height',
@@ -122,12 +122,27 @@
             downstreamPattern: 'colAfter',
             selectorPrefixes: ['.gridsponsive .'],
             rootProperties: function(spec) {
-                return 'position:relative;display:block;float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
+                return 'position:relative;display:block;float:left;margin:0px;padding:0px;list-style:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
+            }
+        },
+        _col: {
+            downstreamPattern: '_colAfter',
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
+            rootProperties: function(spec) {
+                return 'position:relative;display:block;float:left;margin:0px;padding:0px;list-style:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
             }
         },
         colAfter: {
             selectorPrefixes: ['.gridsponsive .'],
             selectorPostfixes: [':after'],
+            rootProperties: function(spec) {
+                return "content:'';display:block;clear:both;";
+            }
+        },
+        _colAfter: {
+            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPostfixes: ['>div:after', '>ul:after', '>li:after'],
             rootProperties: function(spec) {
                 return "content:'';display:block;clear:both;";
             }
@@ -156,9 +171,9 @@
                 return null;
             }
         },
-        chide: {
+        _hide: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:none;';
@@ -181,9 +196,9 @@
                 return null;
             }
         },
-        cshow: {
+        _show: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:block;';
@@ -209,9 +224,9 @@
                 return null;
             }
         },
-        cpos: {
+        _pos: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('l')>=0) {
                     return 'float:left;';
@@ -237,9 +252,9 @@
                 return 'width:_%;'.replace(/_/g, spec);
             }
         },
-        cwidth: {
+        _width: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'width:auto;';
@@ -262,9 +277,9 @@
                 return 'height:_%;'.replace(/_/g, spec);
             }
         },
-        cheight: {
+        _height: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'height:auto;';
@@ -284,9 +299,9 @@
                 return 'color:#_;'.replace(/_/g, spec);
             }
         },
-        ccolor: {
+        _color: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'color:transparent;';
@@ -303,9 +318,9 @@
                 return 'background-color:#_;'.replace(/_/g, spec);
             }
         },
-        cbgcolor: {
+        _bgcolor: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'background-color:transparent;';
@@ -322,9 +337,9 @@
                 return 'padding:_%;'.replace(/_/g, spec);
             }
         },
-        cpad: {
+        _pad: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
@@ -341,9 +356,9 @@
                 return 'padding-top:_%;padding-bottom:_px;'.replace(/_/g, spec);
             }
         },
-        cpadtb: {
+        _padtb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -360,9 +375,9 @@
                 return 'padding-left:_%;padding-right:_%;'.replace(/_/g, spec);
             }
         },
-        cpadlr: {
+        _padlr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -379,9 +394,9 @@
                 return 'padding-top:_%;'.replace(/_/g, spec);
             }
         },
-        cpadt: {
+        _padt: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;'.replace(/_/g, spec.split('x').shift());
@@ -398,9 +413,9 @@
                 return 'padding-right:_%;'.replace(/_/g, spec);
             }
         },
-        cpadr: {
+        _padr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -417,9 +432,9 @@
                 return 'padding-bottom:_%;'.replace(/_/g, spec);
             }
         },
-        cpadb: {
+        _padb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -436,9 +451,9 @@
                 return 'padding-left:_%;'.replace(/_/g, spec);
             }
         },
-        cpadl: {
+        _padl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
@@ -455,9 +470,9 @@
                 return 'border:_% solid transparent;'.replace(/_/g, spec);
             }
         },
-        cpush: {
+        _push: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -474,9 +489,9 @@
                 return 'border-top:_% solid transparent;border-bottom:_% solid transparent'.replace(/_/g, spec);
             }
         },
-        cpushtb: {
+        _pushtb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -493,9 +508,9 @@
                 return 'border-left:_% solid transparent;border-right:_% solid transparent'.replace(/_/g, spec);
             }
         },
-        cpushlr: {
+        _pushlr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;border-right:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -512,9 +527,9 @@
                 return 'border-top:_% solid transparent;'.replace(/_/g, spec);
             }
         },
-        cpusht: {
+        _pusht: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -531,9 +546,9 @@
                 return 'border-right:_% solid transparent;'.replace(/_/g, spec);
             }
         },
-        cpushr: {
+        _pushr: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-right:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -550,9 +565,9 @@
                 return 'border-bottom:_% solid transparent;'.replace(/_/g, spec);
             }
         },
-        cpushb: {
+        _pushb: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-bottom:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -569,9 +584,9 @@
                 return 'border-left:_% solid transparent;'.replace(/_/g, spec);
             }
         },
-        cpushl: {
+        _pushl: {
             selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
-            selectorPostfixes: ['>.col'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -585,13 +600,15 @@
     var scanner = {
         // get array of unique sorted class definitions
         scan: function($source) {
-            var i, j, slugs = [], tokens, allTokens = [],
+            var i, j, slug, slugs = [], tokens, allTokens = [],
                 lastToken, uniqueTokens = [];
             // get all class attributes
             $source.find('.gridsponsive').each(function() {
-                slugs.push($(this).attr('class'));
+                slug = $(this).attr('class');
+                if(slug) slugs.push(slug);
                 $(this).find('*').each(function() {
-                    slugs.push($(this).attr('class'));
+                    slug = $(this).attr('class');
+                    if(slug) slugs.push(slug);
                 });
             });
             // split class attributes to get class definitions
