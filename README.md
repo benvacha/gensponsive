@@ -68,7 +68,7 @@ Any number of cutoffs can be defined with any integer values to customize behavi
 ### Class Definitions
 A class name is composed of two sections, the pattern and the specifications.
 
-The pattern defines what general behavior is applied by the class. Patterns are defined below and include things such as width, widthx, and height.
+The pattern defines what general behavior is applied by the class. Patterns are defined below and include things such as width, height, and pad.
 
 Specifications are what dynamic values should be applied for that region. A specification can be defined for each region or for a subset of the regions, with the last defined specification cascading to the remaining regions. Acceptable specifications for each pattern are defined below.
 
