@@ -29,11 +29,34 @@ When developing with gridsponsive the 'style' attribute will be cleared on the '
         cutoffs: [960, 550],
         showOutput: false,
         storageKey: 'com.yoursite.gridsponsive',
+        stateless: true
+      });
+    });
+  </script>
+```
+
+Set 'storageKey' to a unique value for the project. Develop and enjoy.
+
+### Production Usage
+```html
+<head>
+  <script type="text/javascript" src="pathtofile/jquery.js"></script>
+  <script type="text/javascript" src="pathtofile/gridsponsive.js"></script>
+  <style type="text/css" id="gridsponsive"></style>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('body').gridsponsive({
+        styleId: 'gridsponsive',
+        cutoffs: [960, 550],
+        showOutput: false,
+        storageKey: 'com.yoursite.gridsponsive',
         stateless: false
       });
     });
   </script>
 ```
+
+Make sure 'storageKey' is set to a unique value for the project. Set 'stateless' to false. Browse to each page that has unique definitions. Set 'showOutput' to true. Copy the generated CSS into gridsponsive.css and remove the gridsponsive.js references. Enjoy.
 
 ---
 ### Cutoffs and Regions
