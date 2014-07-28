@@ -10,6 +10,11 @@ gridsponsive is tested in all modern desktop, iOS, and android browsers to ensur
 ### Javascript
 gridsponsive requires javascript and jQuery during the development phase. Once development is complete, the minimized CSS should be saved to a static CSS file and served in place of using gridsponsive.
 
+### Notes
+
+#### Body Styles
+When developing with gridsponsive the 'style' attribute will be cleared on the <body> tag. This does not affect styles defined elsewhere using CSS. 
+
 ---
 ### Development Usage
 ```html

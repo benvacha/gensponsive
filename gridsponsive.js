@@ -831,7 +831,7 @@
         outputStyle: function(element, css) {
             $(element).append(css);
             // force webkit browser to redraw
-            $('body').hide().show(0);
+            $('body').hide().show(0).removeAttr('style');
         },
         // create an output element that the css can be copied from
         output: function(css) {
