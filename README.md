@@ -13,7 +13,7 @@ gridsponsive requires javascript and jQuery during the development phase. Once d
 ### Notes
 
 #### Body Styles
-When developing with gridsponsive the 'style' attribute will be cleared on the <body> tag. This does not affect styles defined elsewhere using CSS. 
+When developing with gridsponsive the 'style' attribute will be cleared on the 'body' tag. This does not affect styles defined elsewhere using CSS. 
 
 ---
 ### Development Usage
