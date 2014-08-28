@@ -1,4 +1,4 @@
-/*  gridsponsive
+/*  gensponsive : github.com/benvacha/gensponsive
 **  Benjamin Vacha : github.com/benvacha
 */
 
@@ -7,7 +7,7 @@
     
     // order to build css
     var buildOrder = [
-        'gridsponsive',
+        'gensponsive',
         'body',
         'footer',
         '_col', 'col',
@@ -46,14 +46,14 @@
         }
     */
     var blueprints = {
-        gridsponsive: {
-            downstreamPattern: 'gridsponsiveAfter',
+        gensponsive: {
+            downstreamPattern: 'gensponsiveAfter',
             selectorPrefixes: ['.'],
             rootProperties: function(spec) {
                 return 'position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
             }
         },
-        gridsponsiveAfter: {
+        gensponsiveAfter: {
             selectorPrefixes: ['.'],
             selectorPostfixes: [':after'],
             rootProperties: function(spec) {
@@ -68,14 +68,14 @@
         },
         body: {
             upstreamPattern: 'html',
-            selectorPrefixes: ['.gridsponsive.'],
+            selectorPrefixes: ['.gensponsive.'],
             rootProperties: function(spec) {
                 return 'position:relative;margin:0px;width:100%;height:auto !important;height:100%;min-height:100%;padding:0px;';
             }
         },
         bodyAfter: {
             selectorPatterns: ['body'],
-            selectorPrefixes: ['.gridsponsive.'],
+            selectorPrefixes: ['.gensponsive.'],
             selectorPostfixes: [':after'],
             rootProperties: function(spec) {
                 if(spec.indexOf('x')>=0) {
@@ -98,7 +98,7 @@
         },
         footer: {
             upstreamPattern: 'bodyAfter',
-            selectorPrefixes: ['.gridsponsive.'],
+            selectorPrefixes: ['.gensponsive.'],
             rootProperties: function(spec) {
                 if(spec.indexOf('x')>=0) {
                     return 'position:relative;display:block;clear:both;margin:-_px 0px 0px 0px;width:100%;height:_px;padding:0px;'.replace(/_/g, spec.split('x').shift());
@@ -120,35 +120,35 @@
         },
         col: {
             downstreamPattern: 'colAfter',
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive .'],
             rootProperties: function(spec) {
                 return 'position:relative;display:block;float:left;margin:0px;padding:0px;list-style:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
             }
         },
         _col: {
             downstreamPattern: '_colAfter',
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             rootProperties: function(spec) {
                 return 'position:relative;display:block;float:left;margin:0px;padding:0px;list-style:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;';
             }
         },
         colAfter: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive .'],
             selectorPostfixes: [':after'],
             rootProperties: function(spec) {
                 return "content:'';display:block;clear:both;";
             }
         },
         _colAfter: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div:after', '>ul:after', '>li:after'],
             rootProperties: function(spec) {
                 return "content:'';display:block;clear:both;";
             }
         },
         clear: {
-            selectorPrefixes: ['.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'clear:both;height:_px;'.replace(/_/g, spec.split('x').shift());
@@ -160,7 +160,7 @@
             }
         },
         hide: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:none;';
@@ -172,7 +172,7 @@
             }
         },
         _hide: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
@@ -185,7 +185,7 @@
             }
         },
         show: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'display:block;';
@@ -197,7 +197,7 @@
             }
         },
         _show: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
@@ -210,7 +210,7 @@
             }
         },
         pos: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('l')>=0) {
                     return 'float:left;';
@@ -225,7 +225,7 @@
             }
         },
         _pos: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('l')>=0) {
@@ -241,7 +241,7 @@
             }
         },
         width: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'width:auto;';
@@ -253,7 +253,7 @@
             }
         },
         _width: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
@@ -266,7 +266,7 @@
             }
         },
         height: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
                     return 'height:auto;';
@@ -278,7 +278,7 @@
             }
         },
         _height: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('a')>=0) {
@@ -291,7 +291,7 @@
             }
         },
         color: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'color:transparent;';
@@ -300,7 +300,7 @@
             }
         },
         _color: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
@@ -310,7 +310,7 @@
             }
         },
         bgcolor: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
                     return 'background-color:transparent;';
@@ -319,7 +319,7 @@
             }
         },
         _bgcolor: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('t')>=0) {
@@ -329,7 +329,7 @@
             }
         },
         pad: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding:_px;'.replace(/_/g, spec.split('x').shift());
@@ -338,7 +338,7 @@
             }
         },
         _pad: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -348,7 +348,7 @@
             }
         },
         padtb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -357,7 +357,7 @@
             }
         },
         _padtb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -367,7 +367,7 @@
             }
         },
         padlr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -376,7 +376,7 @@
             }
         },
         _padlr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -386,7 +386,7 @@
             }
         },
         padt: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-top:_px;'.replace(/_/g, spec.split('x').shift());
@@ -395,7 +395,7 @@
             }
         },
         _padt: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -405,7 +405,7 @@
             }
         },
         padr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-right:_px;'.replace(/_/g, spec.split('x').shift());
@@ -414,7 +414,7 @@
             }
         },
         _padr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -424,7 +424,7 @@
             }
         },
         padb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-bottom:_px;'.replace(/_/g, spec.split('x').shift());
@@ -433,7 +433,7 @@
             }
         },
         _padb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -443,7 +443,7 @@
             }
         },
         padl: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'padding-left:_px;'.replace(/_/g, spec.split('x').shift());
@@ -452,7 +452,7 @@
             }
         },
         _padl: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -462,7 +462,7 @@
             }
         },
         push: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -471,7 +471,7 @@
             }
         },
         _push: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -481,7 +481,7 @@
             }
         },
         pushtb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;border-bottom:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -490,7 +490,7 @@
             }
         },
         _pushtb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -500,7 +500,7 @@
             }
         },
         pushlr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;border-right:_px solid transparent'.replace(/_/g, spec.split('x').shift());
@@ -509,7 +509,7 @@
             }
         },
         _pushlr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -519,7 +519,7 @@
             }
         },
         pusht: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-top:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -528,7 +528,7 @@
             }
         },
         _pusht: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -538,7 +538,7 @@
             }
         },
         pushr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-right:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -547,7 +547,7 @@
             }
         },
         _pushr: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -557,7 +557,7 @@
             }
         },
         pushb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-bottom:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -566,7 +566,7 @@
             }
         },
         _pushb: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -576,7 +576,7 @@
             }
         },
         pushl: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
                     return 'border-left:_px solid transparent;'.replace(/_/g, spec.split('x').shift());
@@ -585,7 +585,7 @@
             }
         },
         _pushl: {
-            selectorPrefixes: ['.gridsponsive.', '.gridsponsive .'],
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
             selectorPostfixes: ['>div', '>ul', '>li'],
             nthProperties: function(spec, n) {
                 if(spec.indexOf('x')>=0) {
@@ -603,7 +603,7 @@
             var i, j, slug, slugs = [], tokens, allTokens = [],
                 lastToken, uniqueTokens = [];
             // get all class attributes
-            $source.find('.gridsponsive').each(function() {
+            $source.find('.gensponsive').each(function() {
                 slug = $(this).attr('class');
                 if(slug) slugs.push(slug);
                 $(this).find('*').each(function() {
@@ -806,7 +806,7 @@
     var generator = {
         // generate and return the minified css
         generate: function(cutoffs, definitions) {
-            var i, j, css = '/* Generated using github.com/benvacha/gridsponsive */ ', 
+            var i, j, css = '/* Generated using github.com/benvacha/gensponsive */ ', 
                 regions, regionQuery, regionClusters, regionCss;
             // for each region create the query and css
             regions = [null].concat(cutoffs);
@@ -868,14 +868,14 @@
         // initialize the plugin for each matched element
         init : function( options ) { return this.each(function(){
             var $this = $(this);
-            $this.data('gridsponsive', $.extend( {
-                styleElement: '#gridsponsive',
+            $this.data('gensponsive', $.extend( {
+                styleElement: '#gensponsive',
                 cutoffs: [960, 550],
                 showOutput: false,
-                storageKey: 'com.yoursite.gridsponsive',
+                storageKey: 'com.yoursite.gensponsive',
                 stateless: false
-            }, options, $this.data('gridsponsive')));
-            var data = $this.data('gridsponsive');
+            }, options, $this.data('gensponsive')));
+            var data = $this.data('gensponsive');
             
             /* */
             
@@ -889,14 +889,14 @@
         }); }
     };
  
-    // adds gridsponsive to jQuery, handles method routing
-    $.fn.gridsponsive = function( method ) {
+    // adds gensponsive to jQuery, handles method routing
+    $.fn.gensponsive = function( method ) {
         if ( methods[method] ) {
             return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
         } else if ( typeof method === 'object' || ! method ) {
             return methods.init.apply( this, arguments );
         } else {
-            $.error( 'Method ' +  method + ' does not exist on jQuery.gridsponsive' );
+            $.error( 'Method ' +  method + ' does not exist on jQuery.gensponsive' );
         }    
     };
     

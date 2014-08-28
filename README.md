@@ -1,34 +1,34 @@
-gridsponsive
+gensponsive
 ============
 
-A dynamically generated standards based accessible CSS responsive grid system. Allowing developers to define custom responsive behaviors by simply writing class names. Unique class names are cached between pages and minimized CSS definitions are generated and applied to the page in seamless real time.
+A dynamically generated standards based accessible CSS responsive grid and style system. Allowing developers to define custom responsive behaviors by simply writing class names. Unique class names are cached between pages and minimized CSS definitions are generated and applied to the page in seamless real time.
 
 ---
 ### Compatability
-gridsponsive is tested in all modern desktop, iOS, and android browsers to ensure proper and consistent operation.
+gensponsive is tested in all modern desktop, iOS, and android browsers to ensure proper and consistent operation.
 
 ### Javascript
-gridsponsive requires javascript and jQuery during the development phase. Once development is complete, the minimized CSS should be saved to a static CSS file and served in place of using gridsponsive.
+gensponsive requires javascript and jQuery during the development phase. Once development is complete, the minimized CSS should be saved to a static CSS file and served in place of using gensponsive.
 
 ### Notes
 
 #### Body Styles
-When developing with gridsponsive the 'style' attribute will be cleared on the 'body' tag. This does not affect styles defined elsewhere using CSS. 
+When developing with gensponsive the 'style' attribute will be cleared on the 'body' tag. This does not affect styles defined elsewhere using CSS. 
 
 ---
 ### Development Usage
 ```html
 <head>
   <script type="text/javascript" src="pathtofile/jquery.js"></script>
-  <script type="text/javascript" src="pathtofile/gridsponsive.js"></script>
-  <style type="text/css" id="gridsponsive"></style>
+  <script type="text/javascript" src="pathtofile/gensponsive.js"></script>
+  <style type="text/css" id="gensponsive"></style>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('body').gridsponsive({
-        styleId: 'gridsponsive',
+      $('body').gensponsive({
+        styleId: 'gensponsive',
         cutoffs: [960, 550],
         showOutput: false,
-        storageKey: 'com.yoursite.gridsponsive',
+        storageKey: 'com.yoursite.gensponsive',
         stateless: true
       });
     });
@@ -41,26 +41,26 @@ Set 'storageKey' to a unique value for the project. Develop and enjoy.
 ```html
 <head>
   <script type="text/javascript" src="pathtofile/jquery.js"></script>
-  <script type="text/javascript" src="pathtofile/gridsponsive.js"></script>
-  <style type="text/css" id="gridsponsive"></style>
+  <script type="text/javascript" src="pathtofile/gensponsive.js"></script>
+  <style type="text/css" id="gensponsive"></style>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('body').gridsponsive({
-        styleId: 'gridsponsive',
+      $('body').gensponsive({
+        styleId: 'gensponsive',
         cutoffs: [960, 550],
         showOutput: false,
-        storageKey: 'com.yoursite.gridsponsive',
+        storageKey: 'com.yoursite.gensponsive',
         stateless: false
       });
     });
   </script>
 ```
 
-Make sure 'storageKey' is set to a unique value for the project. Set 'stateless' to false. Browse to each page that has unique definitions. Set 'showOutput' to true. Copy the generated CSS into gridsponsive.css and remove the gridsponsive.js references. Enjoy.
+Make sure 'storageKey' is set to a unique value for the project. Set 'stateless' to false. Browse to each page that has unique definitions. Set 'showOutput' to true. Copy the generated CSS into gensponsive.css and remove the gensponsive.js references. Enjoy.
 
 ---
 ### Cutoffs and Regions
-Cutoffs are used to define regions in gridsponsive. A cutoff describes an integer width of the browser. By default cutoffs are defined at 960 px and 550 px. This creates 3 regions; width greater than 960 px (desktop), width less than 960 px but greater than 550 px (tablet), and width less than 550 px (phone). These regions are then applied as media queries in the resulting CSS and applied in cascading order from largest to smallest.
+Cutoffs are used to define regions in gensponsive. A cutoff describes an integer width of the browser. By default cutoffs are defined at 960 px and 550 px. This creates 3 regions; width greater than 960 px (desktop), width less than 960 px but greater than 550 px (tablet), and width less than 550 px (phone). These regions are then applied as media queries in the resulting CSS and applied in cascading order from largest to smallest.
 
 Any number of cutoffs can be defined with any integer values to customize behavior to your layout.
 
@@ -104,7 +104,7 @@ Compound patterns such as _width, _color, and _pad apply to the first div, ul, a
 |--------------------|-------------|--------------------------------------------------------------------------------|
 | body               |             | sets the page width and height to fill the entire browser window               |
 | footer             | intx        | creates a sticky footer with (intx)px height                                   |
-| gridsponsive       |             | sets the element to behave as a grid                                           |
+| gensponsive       |             | sets the element to behave as a grid                                           |
 | col, _col          |             | sets the element to behave as a column                                         |
 | clear              | f, intx     | if (f)alse then 0 height and no clear, or clear and have (intx)px height       |
 | hide, _hide        | t, f        | if (t)rue then hide the element, if (f)alse then show the element              |
