@@ -24,6 +24,7 @@ When developing with gensponsive the 'style' attribute will be cleared on the 'b
 ### Development Usage
 ```html
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="pathtofile/jquery.js"></script>
   <script type="text/javascript" src="pathtofile/gensponsive.js"></script>
   <style type="text/css" id="gensponsive"></style>
@@ -45,6 +46,7 @@ Set 'storageKey' to a unique value for the project. Develop and enjoy.
 ### Production Usage
 ```html
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="pathtofile/jquery.js"></script>
   <script type="text/javascript" src="pathtofile/gensponsive.js"></script>
   <style type="text/css" id="gensponsive"></style>
@@ -97,6 +99,21 @@ Specifications are what dynamic values should be applied for that region. A spec
 ```
 
 ---
+### Projects
+###### Coming Soon
+
+Define a collection of class definitions that are all combined into a single, custom named, class definition.
+
+```html
+<script type="text/javascript">
+  $('body').gensponsive('addProjects', {
+    className1: 'col, width-25-50-100, pad-50-25, align-l-r',
+    className2: 'col, width-33-100', push-25, hide--t'
+  });
+</script>
+```
+
+---
 ### Patterns
 
 #### Simple
@@ -109,12 +126,13 @@ Compound patterns such as _width, _color, and _pad apply to the first div, ul, a
 |--------------------|-------------|--------------------------------------------------------------------------------|
 | body               |             | sets the page width and height to fill the entire browser window               |
 | footer             | intx        | creates a sticky footer with (intx)px height                                   |
-| gensponsive       |             | sets the element to behave as a grid                                           |
+| gensponsive        |             | sets the element to behave as a grid                                           |
 | col, _col          |             | sets the element to behave as a column                                         |
 | clear              | f, intx     | if (f)alse then 0 height and no clear, or clear and have (intx)px height       |
 | hide, _hide        | t, f        | if (t)rue then hide the element, if (f)alse then show the element              |
 | show, _show        | t, f        | if (t)rue then show the element, if (f)alse then hide the element              |
 | pos, _pos          | l, r, c     | (l)eft align element, (r)ight align element, (c)enter align element            |
+| align, _align      | l, r, c     | (l)eft align text, (r)ight align text, (c)enter align text                     |
 | width, _width      | a, int, intx| element has (int)% width, or (intx)px width, or (a)uto width                   |
 | height, _height    | a, int, intx| element has (int)% height, or (intx)px height, or (a)uto height                |
 | color, _color      | t, hex      | element has #(hex) text color, or is (t)ransparent                             |

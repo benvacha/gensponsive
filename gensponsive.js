@@ -13,13 +13,13 @@
         '_col', 'col',
         'clear',
         '_hide', '_show',
-        '_pos',
+        '_pos','_align',
         '_width', '_height',
         '_color', '_bgcolor',
         '_pad', '_padtb', '_padlr', '_padt', '_padr', '_padb', '_padl',
         '_push', '_pushtb', '_pushlr', '_pusht', '_pushr', '_pushb', '_pushl',
         'hide', 'show',
-        'pos',
+        'pos','align',
         'width', 'height',
         'color', 'bgcolor',
         'pad', 'padtb', 'padlr', 'padt',  'padr', 'padb', 'padl',
@@ -236,6 +236,37 @@
                 }
                 if(spec.indexOf('c')>=0) {
                     return 'float:none;margin-left:auto;margin-right:auto;';
+                }
+                return null;
+            }
+        },
+        align: {
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('l')>=0) {
+                    return 'text-align:left;';
+                }
+                if(spec.indexOf('r')>=0) {
+                    return 'text-align:right;';
+                }
+                if(spec.indexOf('c')>=0) {
+                    return 'text-align:center;';
+                }
+                return null;
+            }
+        },
+        _align: {
+            selectorPrefixes: ['.gensponsive.', '.gensponsive .'],
+            selectorPostfixes: ['>div', '>ul', '>li'],
+            nthProperties: function(spec, n) {
+                if(spec.indexOf('l')>=0) {
+                    return 'text-align:left;';
+                }
+                if(spec.indexOf('r')>=0) {
+                    return 'text-align:right;';
+                }
+                if(spec.indexOf('c')>=0) {
+                    return 'text-align:center;';
                 }
                 return null;
             }
