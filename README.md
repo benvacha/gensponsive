@@ -108,7 +108,7 @@ Define a collection of class definitions that are all combined into a single, cu
 <script type="text/javascript">
   $('body').gensponsive('addProjects', {
     className1: 'col, width-25-50-100, pad-50-25, align-l-r',
-    className2: 'col, width-33-100', push-25, hide--t'
+    className2: 'col, width-33-100, push-25, hide--t'
   });
 </script>
 ```
