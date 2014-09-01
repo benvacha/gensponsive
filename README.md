@@ -1,8 +1,12 @@
 ![gensponsive](http://gensponsive.com/brand/logo.png)
 
-A dynamically generated standards based accessible CSS responsive grid and style system. Allowing developers to define custom responsive behaviors by simply writing class names. Unique class names are cached between pages and minimized CSS definitions are generated and applied to the page in seamless real time.
+Layout Dependent Responsive CSS Generator
 
-**gensponsive** believes that responsive behavior should be layout dependend, not device dependent. You know when your layout should respond to screen size. **gensponsive** doesn't dictate rigid behavior, it enables any behavior.
+A dynamic runtime generated standards based accessible CSS responsive grid and style system. Allowing developers to define custom responsive behaviors by simply writing class names. Unique class names are cached between pages and minimized CSS definitions are generated and applied to the page in seamless real time.
+
+**gensponsive** believes that responsive behavior should be layout dependent, not device dependent. You know when your layout should respond to screen size. **gensponsive** doesn't dictate rigid behavior, it generates any behavior.
+
+Try the live demo at [http://gensponsive.com](http://gensponsive.com)
 
 ---
 ### Compatability
