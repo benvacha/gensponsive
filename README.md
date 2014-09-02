@@ -31,7 +31,7 @@ When developing with gensponsive the 'style' attribute will be cleared on the 'b
   <script type="text/javascript">
     $(document).ready(function() {
       $('body').gensponsive({
-        styleId: 'gensponsive',
+        styleElement: '#gensponsive',
         cutoffs: [960, 550],
         showOutput: false,
         storageKey: 'com.yoursite.gensponsive',
@@ -41,9 +41,9 @@ When developing with gensponsive the 'style' attribute will be cleared on the 'b
   </script>
 ```
 
-Set 'storageKey' to a unique value for the project. Develop and enjoy.
+Set 'storageKey' to a unique value for the project. Set 'stateless' to true. Develop and enjoy.
 
-### Production Usage
+### Pre Production Usage
 ```html
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,9 +53,9 @@ Set 'storageKey' to a unique value for the project. Develop and enjoy.
   <script type="text/javascript">
     $(document).ready(function() {
       $('body').gensponsive({
-        styleId: 'gensponsive',
+        styleElement: '#gensponsive',
         cutoffs: [960, 550],
-        showOutput: false,
+        showOutput: true,
         storageKey: 'com.yoursite.gensponsive',
         stateless: false
       });
@@ -63,7 +63,16 @@ Set 'storageKey' to a unique value for the project. Develop and enjoy.
   </script>
 ```
 
-Make sure 'storageKey' is set to a unique value for the project. Set 'stateless' to false. Browse to each page that has unique definitions. Set 'showOutput' to true. Copy the generated CSS into gensponsive.css and remove the gensponsive.js references. Enjoy.
+Make sure 'storageKey' is set to a unique value for the project. Set 'stateless' to false. Browse to each page that has unique definitions. Set 'showOutput' to true and refresh the page. Copy the generated CSS from the popup.
+
+### Production Usage
+```html
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="pathtofile/gensponsive.css" />
+```
+
+Paste the generated CSS into gensponsive.css, link to gensponsive.css, and remove the gensponsive.js references. Enjoy.
 
 ---
 ### Cutoffs and Regions
