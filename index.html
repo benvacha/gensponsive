@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gensponsive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link type="image/png" rel="icon" href="resource/icon.png" />
+	<link type="image/png" rel="apple-touch-icon-precomposed" href="resource/icon-white.png" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="gensponsive.demo.js"></script>
+    <style type="text/css" id="gensponsive"></style>
+    <link type="text/css" rel="stylesheet" href="index.css" />
+</head>
+<body>
+    
+    <div class="banner">
+        <div class="header">
+            <div class="icon">
+                <a href="http://gensponsive.com">
+                    <img src="resource/logo.svg" alt="gensponsive" />
+                </a>
+            </div>
+            <div class="menu">
+                <a href="https://github.com/benvacha/gensponsive#development-usage">usage</a>
+                <a href="https://github.com/benvacha/gensponsive#patterns">patterns</a>
+                <a href="https://github.com/benvacha/gensponsive">github</a>
+            </div>
+        </div>
+        <div class="demo">
+            <div class="display" id="html-display">
+                <div class="header">html
+                    <div class="samples">
+                        <div class="sample" id="sample-one">s1</div>
+                        <div class="sample" id="sample-two">s2</div>
+                        <div class="sample" id="sample-three">s3</div>
+                        <div class="sample" id="sample-clear">clr</div>
+                    </div>
+                </div>
+                <textarea class="field" id="html-textarea"></textarea>
+            </div>
+            <div class="display" id="css-display">
+                <div class="header">css</div>
+                <textarea class="field" id="css-textarea" disabled></textarea>
+            </div>
+        </div>
+        <div class="footer">
+            preview
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    <div id="content" class="content">
+        
+    </div>
+    
+    <!--
+    
+    <div class="footer">
+        
+    </div>
+    
+    -->
+    
+    <script type="text/javascript">
+        // common elements
+        var $window = $(window),
+            htmlTextarea = document.getElementById('html-textarea'),
+            htmlDisplay = $('#html-display'),
+            cssTextarea = document.getElementById('css-textarea'),
+            $cssTextarea = $('#css-textarea'),
+            cssDisplay = $('#css-display'),
+            $content = $('#content'),
+            sampleOne = $('#sample-one'),
+            sampleTwo = $('#sample-two'),
+            sampleThree = $('#sample-three'),
+            sampleClear = $('#sample-clear'),
+            inputEvent = new Event('input'),
+            htmlKey = 'com.gensponsive.demo.html';
+        // set the html to the stored html value
+        if(localStorage.getItem(htmlKey)) {
+            htmlTextarea.value = localStorage.getItem(htmlKey);
+        } else {
+            htmlTextarea.value = '<div class="gensponsive width-960x-100 pos-c pad-25x">\n  Start typing in <b>gensponsive</b> html.\n  Try one of the samples (s1, s2, s3).\n  Clear all the input (clr).\n</div>\n\n<div class="gensponsive width-960x-100 pos-c pad-25x padt-0x">\n  Adjust your browser width to see all the responsive magic!\n</div>';
+        }
+        // on page reload or close store the html value, also disables alert
+        window.onbeforeunload = function(){
+            localStorage.setItem(htmlKey, htmlTextarea.value);
+        };
+        // live generation
+        function generate() {
+            $content.html(htmlTextarea.value);
+            $content.gensponsive({
+                demoElement: $cssTextarea,
+                storageKey: 'com.gensponsive.gensponsive',
+                stateless: true
+            });
+        }
+        // add event listener and run on page load
+        if(htmlTextarea.addEventListener) {
+            htmlTextarea.addEventListener('input', generate, false);
+        } else if(htmlTextarea.attachEvent) {
+            htmlTextarea.attachEvent('onpropertychange', generate);
+        }
+        generate();
+        // change the content in htmlTextara
+        // trigger the input change event
+        function changeHtml(html) {
+            htmlTextarea.value = html;
+            if(htmlTextarea.dispatchEvent) {
+                htmlTextarea.dispatchEvent(inputEvent);
+            } else if(htmlTextarea.fireEvent) {
+                htmlTextarea.fireEvent('onpropertychange');
+            }
+        }
+        // on click, autopopulate html with samples
+        sampleOne.click(function() {
+            var html = '<div class="gensponsive width-960x-100 pad-15x pos-c">\n  <h1>gensponsive</h1>\n  <b>Layout Dependent Responsive CSS Generator</b><br />\n  <p>A dynamic, runtime generated, standards based, accessible, CSS responsive grid and style system. Allowing developers to define custom responsive behaviors by simply writing class names. Unique class names are cached between pages and minimized CSS definitions are generated and applied to the page in seamless real time.</p>\n  <p><b>gensponsive</b> believes that responsive behavior should be layout dependent, not device dependent. You know when your layout should respond to screen size. <b>gensponsive</b> does not dictate rigid behavior, it generates any behavior.</p>\n</div>';
+            changeHtml(html);
+        });
+        sampleTwo.click(function() {
+            var html = '<div class="gensponsive width-960x-100 pos-c padt-25x">\n\n  <div class="col width-25-50 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n  <div class="col width-25-50 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n  <div class="col width-25-50 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n  <div class="col width-25-50 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n\n  <div class="clear-15x-0x"></div>\n\n  <div class="col width-33-100 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n\n  <div class="col width-33-100 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n  <div class="col width-33-100 height-25x pushtb--10x pushlr-10x bgcolor-CCC"></div>\n\n  <div class="col width-50-100 push-10x pad-10x bgcolor-CCC">\n    <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n    <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n    <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n  </div>\n\n  <div class="col width-50-100 push-10x pad-10x bgcolor-CCC">\n    <div class="col width-25-50-100 push-5x pad-5x bgcolor-999"></div>\n    <div class="col width-25-50-100 push-5x pad-5x bgcolor-999"></div>\n    <div class="col width-25-50-100 push-5x pad-5x bgcolor-999"></div>\n    <div class="col width-25-50-100 push-5x pad-5x bgcolor-999"></div>\n  </div>\n</div>';
+            changeHtml(html);
+        });
+        sampleThree.click(function() {
+            var html = '<div class="gensponsive width-960x-100 pos-c padt-25x">\n\n  <div class="_col _width-25-50 _push-5x _pad-10x _bgcolor-CCC">\n    <div></div>\n    <div></div>\n    <div></div>\n    <div></div>\n  </div>\n\n  <div class="_col _width-33-100 _push-10x _pad-10x _bgcolor-CCC">\n    <div></div>\n    <div></div>\n    <div></div>\n  </div>\n\n  <div class="_col _width-50-100 _push-10x _pad-10x _bgcolor-CCC">\n    <div>\n      <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n      <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n      <div class="col width-33-100 push-5x pad-5x bgcolor-999"></div>\n    </div>\n    <div class="_col _width-25-50-100 _push-5x _pad-5x _bgcolor-999">\n      <div></div>\n      <div></div>\n      <div class="_col _width-50-100 _push-5x _pad-5x _bgcolor-666">\n        <div></div>\n        <div></div>\n      </div>\n      <div></div>\n    </div>\n  </div>\n\n  <ul class="col width-100 _col _width-25-50-100 _push-10x _pad-10x _bgcolor-CCC">\n    <li></li>\n    <li></li>\n    <li></li>\n    <li></li>\n  </ul>\n\n</div>';
+            changeHtml(html);
+        });
+        sampleClear.click(function() {
+            changeHtml('');
+        });
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
