@@ -1,4 +1,4 @@
-![gensponsive](http://gensponsive.com/brand/logo.png)
+# gensponsive
 
 Layout Dependent Responsive CSS Generator
 
@@ -6,7 +6,7 @@ A dynamic, runtime generated, standards based, accessible, CSS responsive grid a
 
 **gensponsive** believes that responsive behavior should be layout dependent, not device dependent. You know when your layout should respond to screen size. **gensponsive** doesn't dictate rigid behavior, it generates any behavior.
 
-Try the live demo at [http://gensponsive.com](http://gensponsive.com)
+Try the live demo at [http://gensponsive.benvacha.com](http://gensponsive.benvacha.com)
 
 ---
 ### Compatability
